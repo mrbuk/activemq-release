@@ -1,0 +1,8 @@
+---
+name: activemq-server
+templates:
+  ctl.erb: bin/ctl
+
+packages:
+- activemq
+- openjdk

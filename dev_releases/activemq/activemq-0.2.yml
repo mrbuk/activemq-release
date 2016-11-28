@@ -1,0 +1,22 @@
+---
+packages:
+- name: activemq
+  version: b6753d5059df75a19f39bdf6c7e0999b03a33159
+  fingerprint: b6753d5059df75a19f39bdf6c7e0999b03a33159
+  sha1: b16494b44ecc732ea09dd9ea8bc49793fafe623b
+  dependencies:
+  - openjdk
+- name: openjdk
+  version: 69a6526673785505b110dd0dd12eaed8fbae0341
+  fingerprint: 69a6526673785505b110dd0dd12eaed8fbae0341
+  sha1: 26721d07dfe7f2ef477de15d82e05f5afeea231f
+  dependencies: []
+jobs:
+- name: activemq-server
+  version: a6c8b7a15730407eff3dc0c50304097c8e5d6d0b
+  fingerprint: a6c8b7a15730407eff3dc0c50304097c8e5d6d0b
+  sha1: c9487575e921b407e15dd2cd2bc27b996ba0aa27
+commit_hash: '00000000'
+uncommitted_changes: false
+name: activemq
+version: '0.2'

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/activemq-server
+LOG_DIR=/var/vcap/sys/log/activemq-server
+PIDFILE=${RUN_DIR}/pid
+
+export ACTIVEMQ_DATA=/var/vcap/store/activemq
+export JAVA_HOME=/var/vcap/packages/openjdk
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR $ACTIVEMQ_DATA
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR $ACTIVEMQ_DATA
+
+    cd /var/vcap/packages/activemq
+
+    ./bin/activemq start \
+      >>  $LOG_DIR/activemq-server.stdout.log \
+      2>> $LOG_DIR/activemq-server.stderr.log && \
+    ./bin/activemq status | grep pid | egrep -o "[0-9]+" > $PIDFILE
+
+    ;;
+
+  stop)
+    /var/vcap/packages/activemq/bin/activemq stop \
+      >>  $LOG_DIR/activemq-server.stdout.log \
+      2>> $LOG_DIR/activemq-server.stderr.log
+
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac

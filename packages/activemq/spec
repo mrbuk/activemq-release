@@ -1,0 +1,8 @@
+---
+name: activemq
+
+dependencies:
+- openjdk
+
+files:
+- activemq/apache-activemq-5.14.1.tar.gz

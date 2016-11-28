@@ -1,0 +1,5 @@
+check process activemq-server
+  with pidfile /var/vcap/sys/run/activemq-server/pid
+  start program "/var/vcap/jobs/activemq-server/bin/ctl start"
+  stop program "/var/vcap/jobs/activemq-server/bin/ctl stop"
+  group vcap

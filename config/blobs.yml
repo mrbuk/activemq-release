@@ -1,0 +1,9 @@
+---
+activemq/apache-activemq-5.14.1.tar.gz:
+  object_id: 4efa0e63-b72e-4438-8928-1e9b13d1d6de
+  sha: 106851b688bfa63fd1c5c4b025daddb720f35f4b
+  size: 54189033
+openjdk/openjdk-1.8.0_101.tar.gz:
+  object_id: 07a5df35-4e8f-41a5-8970-23dd119d4266
+  sha: fc73f9ddde4e4b662b1cac20883594327bd7e63f
+  size: 45396178
