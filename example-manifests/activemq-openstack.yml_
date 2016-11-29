@@ -1,0 +1,56 @@
+<%
+director_uuid = 'CHANGE-ME'
+deployment_name = 'jenkins'
+%>
+---
+name: activemq-deployment
+director_uuid: 8da25477-bde7-4fc8-b2fc-bfeb2f8fd1f8
+
+releases:
+- {name: activemq, version: latest}
+
+resource_pools:
+- name: vms
+  network: default
+  stemcell:
+    name: bosh-openstack-kvm-ubuntu-trusty-go_agent-raw
+    version: 3263.8
+  cloud_properties:
+    instance_type: m1.small
+
+disk_pools:
+- name: default
+  disk_size: 20_480
+#  cloud_properties:
+#    type: ssd
+
+networks:
+- name: default
+  type: dynamic
+  cloud_properties:
+    net_id: 7898579e-b62d-4063-a3ac-88ffc70dfa8c
+    security_groups:
+    - opsmanager
+
+compilation:
+  workers: 1
+  network: default
+  reuse_compilation_vms: true
+  cloud_properties:
+    instance_type: m1.small
+
+update:
+  canaries: 1
+  max_in_flight: 3
+  canary_watch_time: 15000-30000
+  update_watch_time: 15000-300000
+
+jobs:
+- name: activemq_server
+  instances: 1
+  templates:
+  - {name: activemq-server, release: activemq}
+  resource_pool: vms
+  persistent_disk_pool: default
+  networks:
+  - name: default
